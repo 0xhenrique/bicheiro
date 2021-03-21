@@ -8,7 +8,11 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import HomeScreen from '../screens/HomeScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeScreenParamList } from '../types';
+import LoginScreen from '../screens/LoginScreen';
+import CadastroScreen from '../screens/CadastroScreen';
+import RelatorioScreen from '../screens/RelatorioScreen';
+
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeScreenParamList,  CadastroScreenParamList, LoginScreenParamList, RelatorioScreenParamList} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -40,7 +44,29 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="RelatorioScreen"
+        component={RelatorioScreenNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={LoginScreenNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Cadastro"
+        component={CadastroScreenNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
     </BottomTab.Navigator>
+    
   );
 }
 
@@ -91,5 +117,47 @@ function HomeScreenNavigator() {
         options={{ headerTitle: 'Home Title' }}
       />
     </HomeScreenStack.Navigator>
+  );
+}
+
+const CadastroScreenStack = createStackNavigator<CadastroScreenParamList>();
+
+function CadastroScreenNavigator() {
+  return (
+    <CadastroScreenStack.Navigator>
+      <CadastroScreenStack.Screen
+        name="CadastroScreen"
+        component={CadastroScreen}
+        options={{ headerTitle: 'Cadastro Title' }}
+      />
+    </CadastroScreenStack.Navigator>
+  );
+}
+
+const LoginScreenStack = createStackNavigator<LoginScreenParamList>();
+
+function LoginScreenNavigator() {
+  return (
+    <LoginScreenStack.Navigator>
+      <LoginScreenStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerTitle: 'Login Title' }}
+      />
+    </LoginScreenStack.Navigator>
+  );
+}
+
+const RelatorioScreenStack = createStackNavigator<RelatorioScreenParamList>();
+
+function RelatorioScreenNavigator() {
+  return (
+    <RelatorioScreenStack.Navigator>
+      <RelatorioScreenStack.Screen
+        name="RelatorioScreen"
+        component={RelatorioScreen}
+        options={{ headerTitle: 'Relatorio Title' }}
+      />
+    </RelatorioScreenStack.Navigator>
   );
 }
